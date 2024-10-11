@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Калькулятор стоимости заказа</title>
+</head>
+<body>
+  <h1>Калькулятор стоимости заказа</h1>
+  <form>
+    <label for="quantity">Количество:</label>
+    <input type="number" id="quantity" min="1">
+    <br>
+    <label for="product">Товар:</label>
+    <select id="product">
+      <option value="apple" data-price="1">Яблоко</option>
+      <option value="orange" data-price="2">Апельсин</option>
+      <option value="banana" data-price="3">Банан</option>
+    </select>
+    <br>
+    <button type="button" onclick="calculateCost()">Подсчитать стоимость</button>
+  </form>
+  <br>
+  <div id="cost"></div>
+  <script>
+    function calculateCost() {
+      const quantity = document.getElementById('quantity').value;
+      const product = document.getElementById('product').value;
+      const price = document.querySelector(`#product option[value="${product}"]`).dataset.price;
+      const cost = quantity * price;
+      document.getElementById('cost').innerHTML = `Стоимость заказа: ${cost}`;
+    }
+  </script>
+</body>
+</html>
